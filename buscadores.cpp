@@ -12,24 +12,6 @@
 
 using namespace std;
 
-/*struct NodoHuffman
-{
-    int valor;
-    int frecuencia;
-    NodoHuffman *izq;
-    NodoHuffman *der;
-
-    NodoHuffman(int v, int f) : valor(v), frecuencia(f), izq(nullptr), der(nullptr) {}
-};
-
-struct CompararNodos
-{
-    bool operator()(NodoHuffman *izq, NodoHuffman *der)
-    {
-        return izq->frecuencia > der->frecuencia;
-    }
-};
-*/
 
 int busquedaBinaria(int* arreglo, int inicio, int fin, int objetivo) {
     if (inicio <= fin) {
@@ -62,13 +44,15 @@ int binarySearchSample(int sample[], int size, int valor) {
     return der; // Retornar el índice más cercano por debajo del valor
 }
 
-int encuentraIndice(int original[], int gaps[], int size, int ini_indice, int valor) {
+int encuentraIndice(int gaps[], int size, int ini_indice, int valor, int sample_valor) {
     int indice_actual = ini_indice;
-    int valor_actual = original[ini_indice];
-    while (indice_actual < size && valor_actual < valor) {
-        valor_actual += gaps[indice_actual+1];
+    int valor_actual = sample_valor;
+
+    while (indice_actual < size - 1 && valor_actual < valor) {
         indice_actual++;
+        valor_actual += gaps[indice_actual];
     }
+
     if (valor_actual == valor) {
         return indice_actual;
     } else {

@@ -85,7 +85,7 @@ int main() {
     auto start = high_resolution_clock::now(); 
     int indiceSampleLineal = binarySearchSample(sample_lineal, m, valor);
     int ini_indice_lineal = indiceSampleLineal * b;
-    int indice_encontrado_lineal = encuentraIndice(arregloLineal, gaps_lineal, size, ini_indice_lineal, valor);
+    int indice_encontrado_lineal = encuentraIndice(gaps_lineal, size, ini_indice_lineal, valor, sample_lineal[indiceSampleLineal]);
     auto stop = high_resolution_clock::now(); 
     auto duration = duration_cast<nanoseconds>(stop - start);
     cout << "Tiempo de búsqueda binaria en el arreglo lineal: " << duration.count() << " nanosegundos" << endl;
@@ -94,7 +94,7 @@ int main() {
     start = high_resolution_clock::now(); 
     int indiceSampleNormal = binarySearchSample(sample_normal, m, valor);
     int ini_indice_normal = indiceSampleNormal * b;
-    int indice_encontrado_normal = encuentraIndice(arregloNormal, gaps_normal, size, ini_indice_normal, valor);
+    int indice_encontrado_normal = encuentraIndice(gaps_normal, size, ini_indice_normal, valor, sample_normal[indiceSampleNormal]);
     stop = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(stop - start);
     cout << "Tiempo de búsqueda binaria en el arreglo lineal: " << duration.count() << " nanosegundos" << endl;
