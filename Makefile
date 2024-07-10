@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS= -std=c++17 
 BINS= explicito gap_coding huffman
-OBJ=buscadores.o generadores.o
+OBJ=buscadores.o generadores.o funcionesHuffman.o
 
 all: clean $(BINS)
 
@@ -9,6 +9,8 @@ buscadores.o: buscadores.cpp
 	$(CC) $(CFLAGS) -c buscadores.cpp
 generadores.o: generadores.cpp
 	$(CC) $(CFLAGS) -c generadores.cpp
+funcionesHuffman.o: funcionesHuffman.cpp
+	$(CC) $(CFLAGS) -c funcionesHuffman.cpp
 explicito: $(OBJ) explicito.cpp
 	$(CC) $(CFLAGS) -o explicito explicito.cpp $(OBJ) 
 gap_coding: $(OBJ) gap_coding.cpp

@@ -12,24 +12,6 @@
 
 using namespace std;
 
-/*struct NodoHuffman
-{
-    int valor;
-    int frecuencia;
-    NodoHuffman *izq;
-    NodoHuffman *der;
-
-    NodoHuffman(int v, int f) : valor(v), frecuencia(f), izq(nullptr), der(nullptr) {}
-};
-
-struct CompararNodos
-{
-    bool operator()(NodoHuffman *izq, NodoHuffman *der)
-    {
-        return izq->frecuencia > der->frecuencia;
-    }
-};*/
-
 int* inicializarArregloLineal(int* arreglo, int n) {
     arreglo[0] = rand() % 10; // Valor inicial aleatorio entre 0 y 99
     for (int i = 1; i < n; i++) {
@@ -110,16 +92,19 @@ void generarCodigosHuffman(NodoHuffman *raiz, string codigo, map<int, string> &h
     generarCodigosHuffman(raiz->der, codigo + "1", huffmanCode);
 }
 
-void codificarBits(int gaps[], int size, map<int, string> &huffmanCode, char charCode[], vector<pair<int, int>> frecuenciasOrdenadas){
-    for (int i = 0; i < huffmanCode.size(); ++i){
+void codificarBits(vector<pair<int, string>> &huffmanCode, char charCode[], vector<pair<int, int>> frecuenciasOrdenadas)
+{
+    for (int i = 0; i < huffmanCode.size(); ++i)
+    {
         char c = 0;
         int k = 7;
-        for(int j = huffmanCode[frecuenciasOrdenadas[i].first].size() - 1; j >=0 ; j--){
-            if(huffmanCode[frecuenciasOrdenadas[i].first][j] == '1')
+        for (int j = huffmanCode[i].second.size() - 1; j >= 0; j--)
+        {
+            if (huffmanCode[i].second[j] == '1')
                 c |= (1 << k);
             k--;
         }
-        charCode[frecuenciasOrdenadas[i].first] = c;
+        charCode[i] = c;
     }
 }
 

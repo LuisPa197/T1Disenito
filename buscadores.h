@@ -6,24 +6,6 @@
 #include <vector>
 #include "nodo_huffman.h"
 
-/*struct NodoHuffman
-{
-    int valor;
-    int frecuencia;
-    NodoHuffman *izq;
-    NodoHuffman *der;
-
-    NodoHuffman(int v, int f) : valor(v), frecuencia(f), izq(nullptr), der(nullptr) {}
-};
-
-struct CompararNodos
-{
-    bool operator()(NodoHuffman *izq, NodoHuffman *der)
-    {
-        return izq->frecuencia > der->frecuencia;
-    }
-};*/
-
 int busquedaBinaria(int* arreglo, int inicio, int fin, int objetivo);
 int binarySearchSample(int sample[], int size, int valor);
 int encuentraIndice(int gaps[], int size, int ini_indice, int valor, int sample_valor);
